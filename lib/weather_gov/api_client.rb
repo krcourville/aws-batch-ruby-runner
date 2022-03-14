@@ -37,7 +37,7 @@ module WeatherGov
     private
 
     def user_agent
-      { "User-Agent": "(aws-batch-ruby-runner, #{ENV['WEATHER_GOV_USER_AGENT']}" }
+      { 'User-Agent': "(aws-batch-ruby-runner, #{ENV['WEATHER_GOV_USER_AGENT']}" }
     end
   end
 end

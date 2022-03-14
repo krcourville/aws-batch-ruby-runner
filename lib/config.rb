@@ -31,9 +31,7 @@ class Config
   def update(&block)
     block.call(@config_hash)
     yaml_data = YAML.dump(@config_hash)
-    File.open(@config_path, 'w') do |h|
-      h.write yaml_data
-    end
+    File.write(@config_path, yaml_data)
   end
 
   # Retrieve configuration as a hash
