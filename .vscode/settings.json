@@ -1,0 +1,8 @@
+{
+  "solargraph.commandPath": "bin/solargraph",
+  "solargraph.formatting": true,
+  "editor.formatOnSave": true,
+  "solargraph.diagnostics": true,
+  "solargraph.autoformat": true,
+  "solargraph.useBundler": true
+}
