@@ -11,11 +11,10 @@ gem 'yaml', '~> 0.2.0'
 
 gem 'easy_logging'
 
-gem 'jsonapi-serializer'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'debase', '~>0.2.5.beta2', require: false
-  gem 'dotenv-rails'
   gem 'rspec', '~> 3.11'
   gem 'rubocop', require: false
   gem 'rubocop-rake'

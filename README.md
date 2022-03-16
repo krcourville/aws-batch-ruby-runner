@@ -11,6 +11,27 @@ rake -D
 rake forecast:today
 ```
 
+## Running docker
+
+```sh
+# set a version
+export VERSION=1.0.0
+export TAG=aws-batch-ruby-runner:$VERSION
+
+# build the image
+docker build . -t $TAG
+
+# run interactive shell
+docker run --rm -it $TAG sh
+
+# run rake tasks
+
+docker run --rm -it $TAG -T
+docker run --rm -it $TAG forecast:today
+
+
+```
+
 ## Troubleshooting
 
 - [Complete Guide to setup VS Code for Ruby on Rails (Debugger, Linter, Completion, Formatting)](https://dev.to/abstractart/easy-way-to-setup-debugger-and-autocomplete-for-ruby-in-visual-studio-code-2gcc)
