@@ -37,7 +37,7 @@ namespace :forecast do
   end
 
   desc %(
-    "Prints today's forecast"
+    Prints today's forecast
     Usage:
       rake forecast:today
     Output:
@@ -50,5 +50,15 @@ namespace :forecast do
   task today: :dotenv do
     fc = Forecast.new
     puts fc.today
+  end
+
+  desc %(
+    Save today's forecast to S3
+    Usage:
+      rake forecast:save
+  )
+  task save: :dotenv do
+    fc = Forecast.new
+    fc.save ENV['BUCKET_NAME']
   end
 end

@@ -13,6 +13,9 @@ gem 'easy_logging'
 
 gem 'dotenv-rails'
 
+gem 'aws-sdk-ec2', '~> 1'
+gem 'aws-sdk-s3', '~> 1'
+
 group :development, :test do
   gem 'debase', '~>0.2.5.beta2', require: false
   gem 'rspec', '~> 3.11'

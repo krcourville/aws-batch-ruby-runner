@@ -1,5 +1,7 @@
 # aws-batch-ruby-runner
 
+Sample AWS Batch process using plain Ruby tasks managed via Rake.
+
 ## Getting Started
 
 ```sh
