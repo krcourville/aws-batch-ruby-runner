@@ -17,14 +17,14 @@ FROM base
 
 ENV APP_USER app
 RUN adduser -D ${APP_USER}
+
 USER ${APP_USER}
 WORKDIR /home/${APP_USER}
 
 COPY --from=dependencies /usr/local/bundle /usr/local/bundle/
-WORKDIR /home/${APP_USER}
 
 COPY --chown=${APP_USER} Rakefile ./
 COPY --chown=${APP_USER} lib ./lib
 COPY --chown=${APP_USER} config ./config
 
-CMD [ "rake" ]
+ENTRYPOINT [ "rake" ]

@@ -22,11 +22,11 @@ export TAG=krcourville/ruby-runner:$VERSION
 docker build . -t $TAG
 
 # run interactive shell
-docker run --rm -it $TAG sh
+docker run --rm -it --entrypoint sh $TAG
 
 # run rake tasks
 
-docker run --rm -it $TAG -T
+docker run --rm -it $TAG rake -T
 docker run --rm -it $TAG forecast:today
 ```
 
@@ -43,8 +43,10 @@ docker build . -t $TAG
 # 5. push
 docker push $TAG
 # 6.update Batch Job Definition:
-pushd infrastructure
+# 6a. Set other required Terraform params
 export TF_VAR_app_image=$TAG
+
+pushd infrastructure
 terraform apply
 popd
 # 7.commit changes
@@ -54,6 +56,14 @@ git tag $VERSION && git push --tags
 ```
 
 ## Troubleshooting
+
+Error: Creating CloudWatch Log Group failed: ResourceAlreadyExistsException: The specified log group already exists: The CloudWatch Log Group '/aws/batch/job' already exists.
+
+Be sure to import and properly manage retention of /aws/batch/job log group
+
+```sh
+terraform import aws_cloudwatch_log_group.aws_batch_job_log_group /aws/batch/job
+```
 
 - [Complete Guide to setup VS Code for Ruby on Rails (Debugger, Linter, Completion, Formatting)](https://dev.to/abstractart/easy-way-to-setup-debugger-and-autocomplete-for-ruby-in-visual-studio-code-2gcc)
 - <https://gorails.com/setup/ubuntu/21.04>
